@@ -9,6 +9,7 @@ def hangman():
     game_word = rnd.choice(words)
     print(game_word)
     blanks = []
+    wrong_letters_guessed = []
     for letters in game_word:
         blanks += "_"
     print(" ".join(blanks))
@@ -23,7 +24,7 @@ def hangman():
             game_over = True
         else:
             user_input = input("Guess the word:\n>> ")
-            if user_input in blanks:
+            if user_input in blanks or user_input in wrong_letters_guessed:
                 print("You've Already Guessed That Letter.")
                 print("Guess Again !!!!!")
             else:
@@ -34,14 +35,10 @@ def hangman():
                     n+=1
                 print(" ".join(blanks))
                 print(lines)
-
-                wrong_letter_guessed = []    
+  
                 if user_input not in game_word:
-                    if user_input in wrong_letter_guessed:
-                        print("You've Already Guessed That Letter.")
-                        print("Guess Again !!!!!")
-                    elif user_input not in wrong_letter_guessed:
-                        wrong_letter_guessed.append(user_input)
+                        wrong_letters_guessed.append(user_input)
+                        print("Wrong Guess !!")
                         print(stages[lives-1])
                         lives -= 1
                         if lives == 1:
