@@ -7,7 +7,7 @@ lines = ("-"*40)
 def hangman():
     print(logo)
     game_word = rnd.choice(words)
-    print(game_word)
+    #print(game_word)
     blanks = []
     wrong_letters_guessed = []
     for letters in game_word:
@@ -27,6 +27,7 @@ def hangman():
             if user_input in blanks or user_input in wrong_letters_guessed:
                 print("You've Already Guessed That Letter.")
                 print("Guess Again !!!!!")
+                print(lines)
             else:
                 n = 0
                 for letter in game_word:
